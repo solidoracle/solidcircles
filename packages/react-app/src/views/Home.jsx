@@ -131,7 +131,7 @@ function Home({
                 >
                   <a
                     href={
-                      "https://opensea.io/assets/" +
+                      "https://testnets.opensea.io/assets/goerli/" +
                       (readContracts && readContracts.SolidCircles && readContracts.SolidCircles.address) +
                       "/" +
                       item.id
