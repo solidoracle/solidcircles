@@ -132,7 +132,7 @@ function Home({
                 >
                   <a
                     href={
-                      "https://mainnet.opensea.io/assets/optimism/" +
+                      "https://opensea.io/assets/optimism/" +
                       (readContracts && readContracts.SolidCircles && readContracts.SolidCircles.address) +
                       "/" +
                       item.id
