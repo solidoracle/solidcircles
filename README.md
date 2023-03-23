@@ -5,6 +5,7 @@ SolidCircles is a collection of dynamically changing artworks stored on the bloc
 Limited edition artwork (only 777 pieces) created by blending different color layers using SVG, which interact with one another and gradually move at varying velocities, resulting in an NFT that continuously transforms and shifts in color.
 
 https://solidcircles.surge.sh/
+https://opensea.io/collection/solidcircles
 
 ## Deployment
 
