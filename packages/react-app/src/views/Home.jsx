@@ -37,8 +37,6 @@ function Home({
 
   console.log("Home: " + address + ", Balance: " + balance);
 
-  console.log("owner", readContracts.SolidCircles.owner());
-
   useEffect(() => {
     const updateYourCollectibles = async () => {
       const collectibleUpdate = [];
@@ -72,8 +70,6 @@ function Home({
     };
     if (address && balance) updateYourCollectibles();
   }, [address, balance]);
-
-  // console.log(readContracts.SolidCircles.beneficiary(), "beneficiary");
 
   return (
     <div>
