@@ -4,7 +4,7 @@ const { solidity } = require("ethereum-waffle");
 
 use(solidity);
 
-describe("My Dapp", function () {
+describe("SolidCircles Minting", function () {
   let myContract;
 
   // quick fix to let gas reporter fetch data from gas station & coinmarketcap
@@ -13,29 +13,25 @@ describe("My Dapp", function () {
   });
 
   describe("YourCollectible", function () {
-    it("Should deploy YourCollectible", async function () {
-      const YourCollectible = await ethers.getContractFactory("YourCollectible");
+    it("Should deploy ArtGenerator and SolidCircles", async function () {
+      const ArtGenerator = await ethers.getContractFactory("ArtGenerator");
 
-      myContract = await YourCollectible.deploy();
-    });
+      const artGenerator = await ArtGenerator.deploy();
 
-    describe("setPurpose()", function () {
-      it("Should be able to set a new purpose", async function () {
-        const newPurpose = "Test Purpose";
+      const SolidCircles = await ethers.getContractFactory("SolidCircles");
 
-        await myContract.setPurpose(newPurpose);
-        expect(await myContract.purpose()).to.equal(newPurpose);
-      });
+      const solidCircles = await SolidCircles.deploy(artGenerator.address);
 
-      it("Should emit a SetPurpose event ", async function () {
-        const [owner] = await ethers.getSigners();
+      const amount = await solidCircles.MAX_SOLIDCIRCLES();
+      let totalPrice = 0;
 
-        const newPurpose = "Another Test Purpose";
+      // loop through amount and check final price
+      for (let i = 0; i < amount; i++) {
+        const price = await solidCircles.PRICE();
+        totalPrice += +price;
+      }
 
-        expect(await myContract.setPurpose(newPurpose))
-          .to.emit(myContract, "SetPurpose")
-          .withArgs(owner.address, newPurpose);
-      });
+      console.log("price of #777", totalPrice);
     });
   });
 });

@@ -16,7 +16,7 @@ require("@nomiclabs/hardhat-etherscan");
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
 /*
-      📡 This is where you configure your deploy configuration for SolidCircles
+      📡 This is where you configure your deploy configuration for Oh Pandas
 
       check out `packages/scripts/deploy.js` to customize your deployment
 
@@ -294,7 +294,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 1000,
+            runs: 200,
           },
           viaIR: true,
         },
@@ -310,8 +310,6 @@ module.exports = {
       },
     ],
   },
-  allowUnlimitedContractSize: true,
-
   ovm: {
     solcVersion: "0.7.6",
   },

@@ -14,7 +14,6 @@ import "./Utils.sol";
 import "./ArtGeneratorInterface.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-
 contract SolidCircles is ERC721Enumerable, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
@@ -22,6 +21,7 @@ contract SolidCircles is ERC721Enumerable, Ownable, ReentrancyGuard {
     uint256 public constant MAX_SOLIDCIRCLES = 777;
     uint256 public PRICE;
     uint256 private _currentIndex;
+    address public beneficiary;
 
     mapping(uint256 => uint256) public seeds;
     mapping(address => uint256) public mintedAddress;
@@ -33,6 +33,11 @@ contract SolidCircles is ERC721Enumerable, Ownable, ReentrancyGuard {
         artGenerator = _artGenerator;
         _currentIndex = 0;
         PRICE = 0.001 ether;
+        beneficiary = 0x0FeBf44BA535AB608b5f25509E9eb0Ed590a896C;
+    }
+
+    function transferOwnership(address newOwner) public override onlyOwner {
+        _transferOwnership(newOwner);
     }
 
     event onMintSuccess(address sender, uint256 tokenId);
@@ -82,7 +87,7 @@ contract SolidCircles is ERC721Enumerable, Ownable, ReentrancyGuard {
         _currentIndex++;
         seeds[id] = _createSeed(id, msg.sender);
 
-        payable(0x0FeBf44BA535AB608b5f25509E9eb0Ed590a896C).transfer(msg.value);
+        payable(beneficiary).transfer(msg.value);
 
         PRICE += 0.001 ether;
 
@@ -90,7 +95,6 @@ contract SolidCircles is ERC721Enumerable, Ownable, ReentrancyGuard {
 
         return id;
     }
-
 
     function withdraw() external payable onlyOwner {
         payable(owner()).transfer(address(this).balance);
@@ -101,6 +105,10 @@ contract SolidCircles is ERC721Enumerable, Ownable, ReentrancyGuard {
         onlyOwner
     {
         artGenerator = _artGenerator;
+    }
+
+    function setBenefactor(address _beneficiary) external onlyOwner {
+        beneficiary = _beneficiary;
     }
 
     function setPrice(uint256 _price) external onlyOwner {
