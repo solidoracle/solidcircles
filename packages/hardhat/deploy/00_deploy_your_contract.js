@@ -44,11 +44,11 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
 
   console.log("SolidCircles owner", await solidCircles.owner());
 
-  await solidCircles.transferOwnership(
-    "0xD0f598821FaAe3Fbec9874f43A25ad3301021817"
-  );
+  // await solidCircles.transferOwnership(
+  //   "0xD0f598821FaAe3Fbec9874f43A25ad3301021817"
+  // );
 
-  console.log("SolidCircles owner", await solidCircles.owner());
+  // console.log("SolidCircles owner", await solidCircles.owner());
 
   /*  await YourContract.setPurpose("Hello");
   

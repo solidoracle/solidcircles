@@ -33,7 +33,8 @@ contract SolidCircles is ERC721Enumerable, Ownable, ReentrancyGuard {
         artGenerator = _artGenerator;
         _currentIndex = 0;
         PRICE = 0.001 ether;
-        beneficiary = 0x0FeBf44BA535AB608b5f25509E9eb0Ed590a896C;
+        beneficiary = 0xD0f598821FaAe3Fbec9874f43A25ad3301021817;
+        super.transferOwnership(beneficiary);
     }
 
     function transferOwnership(address newOwner) public override onlyOwner {

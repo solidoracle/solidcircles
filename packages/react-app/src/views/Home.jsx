@@ -37,7 +37,7 @@ function Home({
 
   console.log("Home: " + address + ", Balance: " + balance);
 
-  // console.log("owner", readContracts.SolidCircles.owner());
+  console.log("owner", readContracts.SolidCircles.owner());
 
   useEffect(() => {
     const updateYourCollectibles = async () => {
@@ -73,6 +73,8 @@ function Home({
     if (address && balance) updateYourCollectibles();
   }, [address, balance]);
 
+  // console.log(readContracts.SolidCircles.beneficiary(), "beneficiary");
+
   return (
     <div>
       <div style={{ maxWidth: 820, margin: "auto", marginTop: 32, paddingBottom: 32 }}>
@@ -81,8 +83,9 @@ function Home({
             {" "}
             <h1 style={{ marginBottom: "10px" }}> 🔮SolidCircles </h1>{" "}
             <div>
-              Every artwork is created by blending different color layers, which interact with one another and gradually
-              move at varying velocities, resulting in an NFT that continuously transforms and shifts in color.
+              Limited edition artwork (only 777) created by blending different color layers, which interact with one
+              another and gradually move at varying velocities, resulting in an NFT that continuously transforms and
+              shifts in color.
             </div>
             {price && (
               <div style={{ flexDirection: "", fontSize: "0.75rem", paddingTop: "15px", marginBottom: "" }}>
@@ -133,7 +136,7 @@ function Home({
                 >
                   <a
                     href={
-                      "https://testnets.opensea.io/assets/goerli/" +
+                      "https://mainnet.opensea.io/assets/optimism/" +
                       (readContracts && readContracts.SolidCircles && readContracts.SolidCircles.address) +
                       "/" +
                       item.id
