@@ -117,7 +117,7 @@ export const NETWORKS = {
     color: "#f01a37",
     chainId: 10,
     blockExplorer: "https://optimistic.etherscan.io/",
-    rpcUrl: `https://mainnet.optimism.io`,
+    rpcUrl: `https://opt-mainnet.g.alchemy.com/v2/Qx9e4scedcZ77mOTs465m31wXibIaOOr`,
   },
   rinkebyArbitrum: {
     name: "rinkebyArbitrum",
